@@ -159,4 +159,4 @@ Known bug in gws v0.5.0 — `calendar_events_insert` via MCP fails with a type e
 
 ---
 
-Built for communications teams — [D93 Labs](https://www.ccsd93.com)
+Built for communications teams using Claude Code + Google Workspace.
