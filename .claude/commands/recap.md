@@ -1,0 +1,1 @@
+Give me a full recap of this week — meetings, emails, and anything I got done.

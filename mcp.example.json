@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "google-workspace": {
+      "command": "gws",
+      "args": ["mcp", "-s", "gmail,calendar,tasks", "-e"],
+      "env": {
+        "GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE": "/Users/YOUR_USERNAME/.config/gws/credentials.json",
+        "GOOGLE_WORKSPACE_CLI_CLIENT_SECRET_FILE": "/Users/YOUR_USERNAME/.config/gws/client_secret.json"
+      }
+    }
+  }
+}

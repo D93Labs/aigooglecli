@@ -1,0 +1,9 @@
+.DS_Store
+download.html
+credentials.json
+credentials_plain.json
+*.enc
+.encryption_key
+token_cache*.json
+CLAUDE.md
+.mcp.json
