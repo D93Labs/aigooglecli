@@ -74,24 +74,31 @@ cli/
 
 ### Short version
 
-1. **Install gws CLI**
+1. **Create a Google Cloud project and OAuth credentials**
+   - Go to [console.cloud.google.com](https://console.cloud.google.com) and create a new project
+   - Enable the **Gmail API**, **Google Calendar API**, and **Tasks API** under APIs & Services → Library
+   - Go to **APIs & Services → Credentials → Create Credentials → OAuth 2.0 Client ID**
+   - Choose **Desktop app**, download the JSON, rename it to `client_secret.json`
+   - Place it at `~/.config/gws/client_secret.json` (create the folder if needed)
+
+2. **Install gws CLI**
    ```bash
    npm install -g @googleworkspace/cli
    ```
 
-2. **Authenticate with Google**
+3. **Authenticate with Google**
    ```bash
    gws auth login --account YOUR_EMAIL@yourdomain.com --full -s gmail,calendar,tasks
    ```
 
-3. **Copy and configure the template files**
+4. **Copy and configure the template files**
    ```bash
    cp CLAUDE.example.md CLAUDE.md
    cp mcp.example.json .mcp.json
    ```
    Then open both files and replace every placeholder with your real values (email, calendar IDs, task list IDs, username, location).
 
-4. **Open the folder in Claude Code** — MCP loads automatically. Test with `/morning` or `/today`.
+5. **Open the folder in Claude Code** — MCP loads automatically. Test with `/morning` or `/today`.
 
 See `setup.html` for the full customization guide, including how to find your calendar and task list IDs.
 

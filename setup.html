@@ -318,25 +318,50 @@ cd aigooglecli</code></pre>
 
     <div class="step">
       <div class="step-num">2</div>
+      <div class="step-title">Create a Google Cloud project and OAuth credentials</div>
+      <p>The gws CLI requires an OAuth 2.0 client secret to authenticate with Google. You'll create this once in the Google Cloud Console.</p>
+      <p><strong>Step-by-step:</strong></p>
+      <ol style="padding-left:18px;margin:8px 0 12px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--gray-600);">
+        <li>Go to <strong>console.cloud.google.com</strong> and create a new project</li>
+        <li>Navigate to <strong>APIs &amp; Services → Library</strong> and enable these three APIs:
+          <ul style="padding-left:16px;margin-top:4px;display:flex;flex-direction:column;gap:3px;">
+            <li>Gmail API</li>
+            <li>Google Calendar API</li>
+            <li>Tasks API</li>
+          </ul>
+        </li>
+        <li>Go to <strong>APIs &amp; Services → Credentials → Create Credentials → OAuth 2.0 Client ID</strong></li>
+        <li>Choose <strong>Desktop app</strong> as the application type</li>
+        <li>Download the generated JSON file and rename it to <code>client_secret.json</code></li>
+        <li>Place it at <code>~/.config/gws/client_secret.json</code> — create the folder if it doesn't exist</li>
+      </ol>
+      <div class="callout">
+        <span class="callout-icon">ℹ️</span>
+        <span>If prompted to configure an OAuth consent screen, set it to <strong>Internal</strong> (if using a Google Workspace org account) or <strong>External</strong> with your own email as a test user.</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
       <div class="step-title">Install the gws CLI</div>
       <p>The Google Workspace CLI is the bridge between Claude and your Google account.</p>
       <pre><code>npm install -g @googleworkspace/cli</code></pre>
-      <div class="callout info">
+      <div class="callout">
         <span class="callout-icon">ℹ️</span>
         <span>This project was built with gws v0.5.0. Verify your version with <code>gws --version</code>.</span>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-num">3</div>
+      <div class="step-num">4</div>
       <div class="step-title">Authenticate with Google</div>
-      <p>Run this in a regular terminal (not inside Claude Code). This will open a browser for OAuth sign-in.</p>
+      <p>Run this in a regular terminal (not inside Claude Code). This will open a browser for OAuth sign-in using the <code>client_secret.json</code> you placed in the previous step.</p>
       <pre><code>gws auth login --account YOUR_EMAIL@yourdomain.com --full -s gmail,calendar,tasks</code></pre>
       <p>Your credentials are saved encrypted to <code>~/.config/gws/</code>. They are never committed to git.</p>
     </div>
 
     <div class="step">
-      <div class="step-num">4</div>
+      <div class="step-num">5</div>
       <div class="step-title">Copy and configure CLAUDE.md</div>
       <p>The <code>CLAUDE.example.md</code> file is the assistant's brain — it defines your identity, district context, calendar IDs, and task list IDs. Copy it and fill in your values.</p>
       <pre><code>cp CLAUDE.example.md CLAUDE.md</code></pre>
@@ -348,7 +373,7 @@ cd aigooglecli</code></pre>
     </div>
 
     <div class="step">
-      <div class="step-num">5</div>
+      <div class="step-num">6</div>
       <div class="step-title">Copy and configure .mcp.json</div>
       <p>This tells Claude Code how to connect to the gws MCP server. Update the username path to match your macOS home directory.</p>
       <pre><code>cp mcp.example.json .mcp.json</code></pre>
@@ -356,7 +381,7 @@ cd aigooglecli</code></pre>
     </div>
 
     <div class="step">
-      <div class="step-num">6</div>
+      <div class="step-num">7</div>
       <div class="step-title">Open the folder in Claude Code</div>
       <p>Launch Claude Code, open this project folder, and Claude will automatically load <code>.mcp.json</code> and the slash commands from <code>.claude/commands/</code>.</p>
       <div class="callout tip">
